@@ -1,9 +1,22 @@
 ## Comando úteis para as implementações
 
+##### Clicando em um elemnto diferente de link ou botão
+```
+Clicando em um elemento do tipo SPAN e com Texto igual a "Login"
+Ex: find("span[class='x-btn-button']", :text => 'Login').click
 
+Ex: find("span[class='x-btn-button']").click
+Ex: find("#btn-button']").click 
+```
+##### Buscando um seletor específico que contenha vários elemntos presentes na tela, e filtrando um componente pelo texto presente nele.
+```
+Filtrando o texto "Login" dentrio de um seletor que contenha vários elementos na tela.
+Ex: have_selector "span[class='x-btn-button']", :text => "Login"
+```
 ##### Quando preciso verificar se existe um determinado botão na página
 `expect(page).to have_button('Texto do Botão')` ou `expect(page).to have_button('#id_componente')`
 ```
+Verificando se existe o botão "Salvar" na página
 Ex: expect(page).to have_button('Salvar')
 ```
 ##### Quando preciso verificar se não existe um determinado botão na página

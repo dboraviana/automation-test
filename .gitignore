@@ -1,5 +1,5 @@
 .idea/*
-.idea/deployment.xml
-.idea/encodings.xml
-.idea/workspace.xml
-.idea/vcs.xml
+log/screenshots/*.png
+log/*.html
+log/*.json
+*.lock

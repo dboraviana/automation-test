@@ -2,13 +2,12 @@ class LoginPage
 
   include Capybara::DSL
 
-  def fazLogin(usuario, senha)
-    find('#email').set usuario
-    find('#senha').set senha
-    click_button 'Acessar'
-    #find('input[id=email]').set usuario
-    #find('input[name=senha]').set senha
-    #find('#btn-login').click
+  def fazLogin(usuario, senha, ambiente_operacional)
+    find('input[name=userName]').set usuario
+    find('input[name=password]').set senha
+    find('input[name=ambienteOperacional]').set ambiente_operacional
+
+    find("span[class='x-btn-button']", :text => 'Login').click
   end
 
 end
