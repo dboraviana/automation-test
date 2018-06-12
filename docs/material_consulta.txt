@@ -1,0 +1,30 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;      Comando úteis para as implementações      ;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Quando preciso verificar se existe uma determinada mensagem na página
+expect(page).to have_content “mensagem”
+Ex: expect(page).to have_content “Bem vindo ao nosso Portal de Atendimento”
+
+;; Quando preciso verificar se a página possui um botão ou link com uma determinada mensagem
+expect(page).to have_selector(:link_or_button, "mensagem")
+Ex: expect(page).to have_selector(:link_or_button, "Baixe o PDF aqui")
+
+;; Clicar em um determinado botão presente na Tela (Pelo texto do botão)
+click_button 'Texto no Botão'
+Ex: click_button 'Acessar'
+
+;; Clicar em um determinado botão presente na Tela (Pelo identificador CSS)
+find('#id_componente').click
+Ex: find('#btn-login').click
+
+;; Clicar em um determinado link presente na Tela (Pelo texto do link)
+click_link 'Texto do link'
+Ex: click_link 'Baixe o PDF aqui'
+
+;; Buscar um componente do tipo INPUT pelo Seletor CSS e atribuir um valor
+find('#id_componente').set "valor"
+Ex: find('#senha').set senha
+Ex: find('.obrigatotio').set "Este campo é de preenchimento obrigatório"
+Ex: find('input[id=email]').set usuario
+Ex: find('input[name=senha]').set senha
