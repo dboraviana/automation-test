@@ -1,4 +1,14 @@
-After('@logout_simples') do
+#Este passo será sempre executado antes de um cenário com a tag @specs
+Before('@faz_login_sistema') do
+  visit 'http://sccihomologa.poupex.com.br/sge/'
+
+  usuario = "05064115164"
+  senha = "Brasil07!"
+  login = LoginPage.new
+  login.fazLogin(usuario, senha, '/poupex')
+end
+
+After('@login_simples') do
   find("span[class='x-btn-button']", :text => 'Sair').click
 end
 

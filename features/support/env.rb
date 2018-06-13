@@ -1,6 +1,8 @@
 require 'capybara'
 require 'capybara/cucumber'
 require 'selenium/webdriver' #Necessário para que a redefinição do timeout possa funcionar
+require 'site_prism'
+require 'faker'
 
 Capybara.configure do |config|
   #config.default_driver = :selenium_chrome # Com Navegador
