@@ -1,0 +1,191 @@
+### Listar apenas os arquivos unmerged antes de fazer um push ou commit
+git diff --name-status --diff-filter=U
+
+### Desabilitar a verificação SSL (Exemplo do Erro: SSL certificate problem: unable to get local issuer certificate)
+git config --global http.sslVerify false
+
+### Comando para fazer o git ignorar mudança de permissao como alteração no arquivo.
+git config core.fileMode false
+
+### Recupera o status de todos os arquivos de acordo com o hash do commit passado como parametro. (Desfaz uma a��o de merge automatico quando encontra um conflito)
+git reset --hard <hash>
+Ex: git reset --hard 5df97995cf4a1c1e08dd31a4243e449a8c5e21d4
+
+### Desfaz um commit e ainda gera um Log do que foi revertido
+git revert --strategy resolve <hash>
+Ex: git revert --strategy resolve 5df97995cf4a1c1e08dd31a4243e449a8c5e21d4
+
+### Buscando por um código no seu histórico de commits
+git grep 'nomeDoCodigo()' $(git rev-list --all)
+
+### Encontrando em qual commit um código foi adicionado / removido
+git log -StextoDoCodigo
+
+### Apagar Branch Remota
+git push <nome do origin> > --delete <nome do branch>
+Ex: git push ssh_origin --delete dev-andre
+
+### Apagar Branch Local
+git branch -D <nome do branch>
+Ex:  git branch -D seguranca
+
+### Criar uma branch de Segurança
+git checkout -b <BRANCH-NAME>
+Ex: git checkout -b seguranca
+
+
+### For�ar um "git push" para sobrescrever os arquivos remotos
+git push -f <remote> <branch>
+Ex: git push -f origin master
+
+
+### For�ar um "git checkout" para sobrescrever os arquivos locais
+git checkout -f <remote> <branch>
+git checkout -f master
+
+
+### Para for�ar Sobrescrever arquivos nao controlados pelo git
+git fetch --all
+git reset --hard origin/<BRANCH-NAME>
+Ex: git reset --hard origin/master
+
+
+### Atualizar todas as informaçoes locais
+git fetch [origem]
+Ex: git fetch ssh_origin ou git fetch origin
+
+### Remover arquivos cacheados que foram ignorados, mas continuam versionados
+git rm vendor/* -r --cached
+git add .
+git commit -m 'Ajustando cache dos arquivos'
+
+### Adicionar uma nova origem ao repositorio com autentica�ao SSH
+git remote add <nome_da_origin> <caminho_repositorio_ssh>
+Exemplo: git remote add ssh_origin git@github.com:alyssontkd/galo.git
+
+### Renomear uma origem existente
+git remote rename <origem_inicial> <origem_renomeada>
+Exemplo: git remote rename origin2 ssh_origin
+
+### Remover uma origem local
+git remote rm <nome_origem>
+Exemplo: git remote rm destination
+
+### Apresenta o erro "error: pathspec 'seguranca' did not match any file(s) known to git." ao tentar mudar de branch
+git remote update
+git fetch 
+git checkout --track origin/<BRANCH-NAME>
+Exemplo: git checkout --track origin/dev-alysson
+
+### Renomear destino do Repositorio
+git remote set-url origin new_url
+Exemplo: git remote set-url origin https://github.com/alyssontkd/prova.git
+git remote set-url origin https://github.com/alyssontkd/vendor_zf2.git
+git remote set-url ssh_origin git@github.com:alyssontkd/vendor_zf2.git
+
+### For�ar o PULL a sobrescrever os arquivos locais com as altera�~�oes da branch remota.
+git fetch --all
+git reset --hard origin/<BRANCH-NAME>
+git pull origin <BRANCH-NAME>
+
+Exemplo:
+git reset --hard origin/master
+git pull origin master
+
+
+
+
+### Criar Tags no C�digo para disponibilizar para Homologa��o e Produ��o
+Roteiro de publica��o de release
+
+1) Certifique-se de que funcionalidade est� ok em desenvolvimento no seu branch
+2) Fa�a o merge da branch com a master
+3) Certifique-se de que est� trabalhando no branch correto e que os commits est�o na vers�o correta:
+$ git branch
+* nome-do-branch
+  master
+$ git log
+
+4) Mude para o branch master e fa�a o merge
+$ git checkout master
+$ git pull origin master
+$ git merge nome-do-branch
+� poss�vel que ocorram conflitos. Um conflito � quando um arquivo � alterado em duas branches e o git n�o consegue fazer o merge autom�tico. Nesse caso, voc� deve resolver o conflito na m�o.
+
+Para o changelog, adotar o padr�o:
+fix: corre��o de bug
+novo: nova funcionalidade
+
+5) Edite o arquivo CHANGELOG
+
+6) Adicione o texto do release ao CHANGELOG
+$ vim CHANGELOG
+// fa�a o commit
+$ git add CHANGELOG
+$ git commit -m 'adicionando changelog da vers�o v1.x.x'
+$ git push
+
+7) Criar tag no c�digo
+
+// certifique-se de estar trabalhando no branch correto e fa�a o merge com o master, caso isso ainda n�o tenha sido feito
+$ git branch
+  correcoes
+* master
+
+// liste as tags que j� existem
+$ git tag
+v1.3.0
+v1.3.1
+v1.3.2
+v1.3.3
+
+// crie a tag
+$ git tag -a v1.3.1 -m 'informa��es sobre o release v1.3.1'
+
+// envie a tag para o reposit�rio central (ex: github, gitlab). Caso contr�rio a tag ser� apenas local
+$ git push origin v1.3.1
+
+/// ou envie todas as tags
+$ git push --follow-tags
+Em caso de d�vida, consultar http://192.168.14.67/wiki/Comandos_gerais_de_GIT/#tags
+
+6) Subir para homologa��o
+
+// verifique qual � a tag atual
+$ git describe --tags
+v1.3.0
+
+// atualize o reposit�rio
+$ git pull
+
+// baixe a tag nova criando uma branch para ela
+# git checkout v1.3.1 -b v1.3.1
+
+$ git describe --tags
+v1.3.0
+7) Verificar publica��o
+
+8) Preparar email de release
+
+Caso haja necessidade, elaborar um email de release.
+
+9) Subir para produ��o
+
+# cd /var/www/novosalic.cultura.gov.br 
+
+// verifique qual � a tag atual
+# git describe --tags
+v1.3.0
+
+// atualize as refer�ncias do reposit�rio sem alterar os arquivos
+# git fetch
+
+// verifique se a nova tag apareceu
+# git tag
+v1.3.0
+v1.3.1
+
+// baixe a tag nova criando uma branch para ela
+# git checkout v1.3.1 -b v1.3.1
+10) Enviar email
+

@@ -1,5 +1,17 @@
 ## Comando úteis para as implementações
 
+
+##### Simulando a tecla ENTER
+```
+find('#id_componente').native.send_keys(:enter)
+Ex: find('input[name=operacao]').native.send_keys(:enter)
+```
+##### Simulando a tecla TAB
+```
+find('#id_componente').native.send_keys(:tab)
+Ex: find('input[name=operacao]').native.send_keys(:tab)
+```
+
 ##### Clicando em um elemnto diferente de link ou botão
 ```
 Clicando em um elemento do tipo SPAN e com Texto igual a "Login"
@@ -93,5 +105,18 @@ Ex: find('form input[type="file"]').set('c:/imagens/lista_cidades.csv')
 ```
 Ex: page.execute_script("$('#area button.primary').click()")
 ```
+
+#### Opções para enviar comandos de teclado (SendKeys)
+```
+null, cancel, help, backspace, tab, clear, return, enter, 
+shift, left_shift, control, left_control alt, left_alt, pause, 
+escape, space, page_up, page_down, end, home, left, arrow_left, 
+uparrow_up, right, arrow_rightdown, arrow_down, insert, delete, 
+semicolon, equals, numpad0, numpad1, numpad2, numpad3, numpad4, 
+numpad5, numpad6, numpad7, numpad8, numpad9, multiply, add, 
+separator, subtract, decimal, divide, f1, f2, f3, f4, f5, f6, 
+f7, f8, f9, f10, f11, f12
+```
+
 
 Página de referência: `https://devhints.io/capybara`

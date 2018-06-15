@@ -5,7 +5,7 @@ Before('@faz_login_sistema') do
   usuario = "05064115164"
   senha = "Brasil07!"
   login = LoginPage.new
-  login.fazLogin(usuario, senha, '/poupex')
+  login.faz_login(usuario, senha, '/poupex')
 end
 
 After('@login_simples') do
