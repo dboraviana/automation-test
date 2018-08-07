@@ -36,6 +36,7 @@ GEM
       i18n (>= 0.7)
     ffi (1.9.25)
     ffi (1.9.25-x64-mingw32)
+    ffi (1.9.25-x86-mingw32)
     gherkin (5.1.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
@@ -46,6 +47,8 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     nokogiri (1.8.2-x64-mingw32)
+      mini_portile2 (~> 2.3.0)
+    nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     public_suffix (3.0.2)
     rack (2.0.5)
@@ -77,6 +80,7 @@ GEM
 PLATFORMS
   ruby
   x64-mingw32
+  x86-mingw32
 
 DEPENDENCIES
   capybara
@@ -87,4 +91,4 @@ DEPENDENCIES
   site_prism
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
