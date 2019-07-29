@@ -1,6 +1,11 @@
 
 ## Comando úteis para as implementações
 
+###Atualizando as gemas do Seu Sistema Operacional
+```
+$ bundle update
+$ gem update
+```
 
 ##### Quando preciso verificar se existe um determinado botão na página
 `expect(page).to have_button('Texto do Botão')` ou `expect(page).to have_button('#id_componente')`
