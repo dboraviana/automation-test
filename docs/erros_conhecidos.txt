@@ -5,7 +5,7 @@
 ##### Problema
 `O capybara/selenium não consegue clicar em um link ou botão da aplicação.`
 ##### Percepção do Problema
-`Encontramos esse erro no momentoi de realizar o login na aplicação. Não estavamos encontrando o botão de "LOGIN" pelo Capybara.`
+`Encontramos esse erro no momento de realizar o login na aplicação. Não estavamos encontrando o botão de "LOGIN" pelo Capybara.`
 ##### Solução Encontrada
 ```
 Quando um componente do SGE contiver o atributo unselectable="on", o capybara/selenium não conseguira clicar sobre o elemento. 

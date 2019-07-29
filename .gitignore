@@ -1,5 +1,4 @@
-.idea/*
-log/screenshots/*.png
+Gemfile.lock
 log/*.html
-log/*.json
-*.lock
+log/*.png
+.idea/*

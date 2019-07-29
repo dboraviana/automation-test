@@ -1,61 +1,31 @@
 require 'capybara'
 require 'capybara/cucumber'
-require 'selenium/webdriver' #Necessário para que a redefinição do timeout possa funcionar
+require 'capybara/rspec'
+require 'selenium/webdriver'
 require 'site_prism'
 require 'faker'
+require 'rubygems'
+require 'rspec'
+
+AMBIENTE = ENV['AMBIENTE']
+CONFIG = YAML.load_file(File.dirname(__FILE__) + "/ambientes/#{AMBIENTE}.yml")
+CUSTOM = YAML.load_file(File.dirname(__FILE__) + "/config.yml")
+
+Capybara.register_driver :selenium_chrome_headless do |app|
+  Capybara::Selenium::Driver.load_selenium
+  browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+    opts.args << "--headless"
+    opts.args << "--disable-gpu" if Gem.win_platform?
+    opts.args << "--no-sandbox"
+    opts.args << "--disable-site-isolation-trials"
+    opts.args << "--window-size=1920x1080"
+  end
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
+end
 
 Capybara.configure do |config|
   #config.default_driver = :selenium_chrome # Com Navegador
   config.default_driver = :selenium_chrome_headless # Sem navegador
-
-  Capybara.default_max_wait_time = 50
+  config.app_host = CONFIG['url_padrao']
+  config.default_max_wait_time = 30
 end
-
-##############################################################################
-# ############ REDEFINIÇÃO do TIMEOUT PADRÃO do CAPYBARA  ####################
-##############################################################################
-# Firefox instance with timeout is set to 100 seconds
-#Capybara.register_driver :firefox_timeout do |app|
-#  client = Selenium::WebDriver::Remote::Http::Default.new
-#  client.timeout = 100
-#  Capybara::Selenium::Driver.new(app, :browser => :firefox, :http_client => client)
-#end
-
-# Chrome instance with timeout is set to 100 seconds
-#Capybara.register_driver :chrome_timeout do |app|
-#  client = Selenium::WebDriver::Remote::Http::Default.new
-#  client.timeout = 100
-#  Capybara::Selenium::Driver.new(app, :browser => :chrome, :http_client => client)
-#end
-
-#Capybara.configure do |config|
-#Capybara.default_driver = :firefox_timeout
-#Capybara.default_driver = :chrome_timeout
-
-#config.default_driver = :selenium_chrome # Com Navegador
-#config.default_driver = :selenium_chrome_headless # Sem navegador
-#end
-
-#require 'capybara'
-#require 'capybara/cucumber'
-#require 'selenium/webdriver'
-
-#Capybara.register_driver :chrome do |app|
-#  Capybara::Selenium::Driver.new(app, browser: :chrome)
-#end
-
-#Capybara.register_driver :headless_chrome do |app|
-#  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-#      chromeOptions: { args: %w[ no-sandbox headless disable-gpu window-size=1280, 1024] }
-#  )
-
-#Capybara::Selenium::Driver.new app,
-#                               browser: :chrome,
-#                               desired_capabilities: capabilities
-#end
-
-#Capybara.javascript_driver = :headless_chrome
-
-#Capybara.configure do |config|
-#  config.default_driver = :headless_chrome
-#end
