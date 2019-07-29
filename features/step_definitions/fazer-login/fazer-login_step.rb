@@ -7,6 +7,9 @@ Dado("que eu faça o login no PexNet") do
 end
 
 Quando("acesso o AGPAG") do
+  @database = Database.new
+  @database.select
+
   @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.acessa_agpag_novo
 end

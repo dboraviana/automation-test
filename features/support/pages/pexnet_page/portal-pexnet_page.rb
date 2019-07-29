@@ -1,3 +1,5 @@
+require 'oci8'
+
 class PortalPexNetPage < SitePrism::Page
   include Capybara::DSL
 
