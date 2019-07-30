@@ -1,14 +1,14 @@
 ## Comando úteis para as implementações
 
+### Para instalar uma nova GEM
+```
+$ gem install <nome da gem>
+```
+
 ### Atualizando as gemas do Seu Sistema Operacional
 ```
 $ bundle update
 $ gem update
-```
-
-### Para instalar uma nova GEM
-```
-$ gem install <nome da gem>
 ```
 
 # Comandos úteis para manipulação de elementos
