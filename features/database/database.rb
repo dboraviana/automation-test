@@ -1,5 +1,4 @@
 require 'oci8'
-# require_relative 'database'
 
 class Database
 
