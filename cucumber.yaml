@@ -1,6 +1,7 @@
 default: -p html -p progress -p prod -p cucumber -p bdd
 
 html: -f html -o log/report.html
+#html: -f html -o log/report<%= ENV['TEST_ENV_NUMBER']%>.html
 bdd: -f pretty
 progress: --format progress
 homologa: AMBIENTE=homologacao
