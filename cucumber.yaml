@@ -1,4 +1,4 @@
-default: -p html -p bdd -p progress -p prod -p cucumber
+default: -p html -p progress -p prod -p cucumber -p bdd
 
 html: -f html -o log/report.html
 bdd: -f pretty
@@ -9,3 +9,5 @@ teste: AMBIENTE=teste
 docker: AMBIENTE=docker
 prod: AMBIENTE=producao
 cucumber: features/specs/fazer-login/fazer-login.feature
+
+# https://github.com/gkushang/cucumber-html-reporter

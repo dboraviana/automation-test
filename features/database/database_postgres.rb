@@ -2,44 +2,77 @@ require 'pg'
 
 class DatabasePostgres
 
-  def initialize
-    @connection = PG.new '127.0.0.1','root','','glpi'
+  #def initialize
+  #  @connection = PG::Connection.new '127.0.0.1', 5432, nil, nil, 'test_cucumber', 'postgres', '12345678'
+  #end
+
+  def conectar_postgres
+    PG::Connection.new '127.0.0.1', 5432, nil, nil, 'test_cucumber', 'postgres', '12345678'
   end
 
   def database_version
-    puts "Versão do Banco: "
-    puts @connection.get_server_info()
-  end
+    begin
 
-  def listar_databases
-    puts "\nLista de todos os bancos neste servidor: "
-    @connection.list_dbs.each do |db|
-      puts db
+      connection = self.conectar_postgres
+      puts "Versão do Banco POSTGRES: "
+      puts connection.server_version
+    rescue PG::Error => e
+
+      puts e.message
+    ensure
+
+      connection.close if connection
     end
-
   end
 
   def listar_registros
-    @rs = @connection.query("select * from glpi_users")
-    @n_rows = @rs.num_rows
-    puts "Aqui temos #{@n_rows} registros nesta tabela."
-    @n_rows.times do
-      puts @rs.fetch_row().join("\s")
+    begin
+      connection = self.conectar_postgres
+      rs = connection.exec("select * from contato")
+      n_rows = rs.ntuples
+      puts "Aqui temos #{n_rows} registros nesta tabela do POSTGRES."
+      rs.each_row() do |row|
+        puts row.join("\s")
+      end
+    rescue PG::Error => e
+
+      puts e.message
+    ensure
+
+      connection.close if connection
     end
   end
 
   def select
-    cursor = @connection.query('select * from glpi_users')
-    puts '#### Imprimindo registros da Tabela ####'
-    while r = cursor.fetch()
-      puts r.join(' , ')
+    begin
+      connection = self.conectar_postgres
+      cursor = connection.exec('select * from contato')
+      puts '#### Imprimindo registros da Tabela ####'
+      while r = cursor.each()
+        puts r.join(' , ')
+      end
+      puts '#### Finalizando impressão de registros de usuarios ####'
+      cursor.num_fields
+    rescue PG::Error => e
+
+      puts e.message
+    ensure
+
+      connection.close if connection
     end
-    puts '#### Finalizando impressão de registros de usuarios ####'
-    cursor.num_fields
   end
 
   def delete
-    @connection.exec('DELETE FROM FAM_FAMILIA.TAB_PPS')
+    begin
+      connection = self.conectar_postgres
+      connection.exec('DELETE FROM FAM_FAMILIA.TAB_PPS')
+    rescue PG::Error => e
+
+      puts e.message
+    ensure
+
+      connection.close if connection
+    end
   end
 end
 

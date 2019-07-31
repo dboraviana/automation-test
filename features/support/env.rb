@@ -18,6 +18,7 @@ Capybara.register_driver :selenium_chrome_headless do |app|
     opts.args << "--disable-gpu" if Gem.win_platform?
     opts.args << "--no-sandbox"
     opts.args << "--disable-site-isolation-trials"
+    opts.args << "--log-level=3" # desabilita o devtools listening (logs do console)
     opts.args << "--window-size=1920x1080"
   end
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)

@@ -8,6 +8,11 @@ end
 
 Quando("acesso o AGPAG") do
 
+  # $$$$$$$$ Comandos do Postgres $$$$$$$$
+  @database_postgres = DatabasePostgres.new
+  @database_postgres.database_version
+  @database_postgres.listar_registros
+
   # $$$$$$$$ Comandos do Oracle $$$$$$$$
   @database_oracle = DatabaseOracle.new
   @database_oracle.select
