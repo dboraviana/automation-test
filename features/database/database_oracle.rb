@@ -1,6 +1,6 @@
 require 'oci8'
 
-class Database
+class DatabaseOracle
 
   def initialize
     @connection = OCI8.new('02279423103','02279423103', '//dboraclepoupexqa.poupex.com.br:1521/poupexqa')

@@ -7,8 +7,17 @@ Dado("que eu faça o login no PexNet") do
 end
 
 Quando("acesso o AGPAG") do
-  @database = Database.new
-  @database.select
+
+  # $$$$$$$$ Comandos do Oracle $$$$$$$$
+  @database_oracle = DatabaseOracle.new
+  @database_oracle.select
+
+  # $$$$$$$$ Comandos do MySQL $$$$$$$$
+  @database_mysql = DatabaseMysql.new
+  @database_mysql.database_version
+  @database_mysql.listar_databases
+  @database_mysql.listar_registros
+  @database_mysql.select
 
   @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.acessa_agpag_novo
