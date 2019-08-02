@@ -46,7 +46,7 @@ class DatabaseMysql
       connection = self.conectar_mysql
       rs = connection.query("select * from glpi_users")
       n_rows = rs.num_rows
-      puts "Aqui temos #{@n_rows} registros nesta tabela."
+      puts "Aqui temos #{n_rows} registros nesta tabela."
       n_rows.times do
         puts rs.fetch_row().join("\s")
       end
