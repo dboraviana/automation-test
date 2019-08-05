@@ -2,10 +2,6 @@ require 'pg'
 
 class DatabasePostgres
 
-  #def initialize
-  #  @connection = PG::Connection.new '127.0.0.1', 5432, nil, nil, 'test_cucumber', 'postgres', '12345678'
-  #end
-
   def conectar_postgres
     PG::Connection.new '127.0.0.1', 5432, nil, nil, 'test_cucumber', 'postgres', '12345678'
   end

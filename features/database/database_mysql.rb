@@ -2,10 +2,6 @@ require 'mysql'
 
 class DatabaseMysql
 
-  #def initialize
-  #  @connection = Mysql.new '127.0.0.1','root','','glpi'
-  #end
-
   def conectar_mysql
     Mysql.new '127.0.0.1','root','','glpi'
   end
