@@ -1,5 +1,7 @@
+require "report_builder"
+
 Before() do
-  visit CONFIG['url_padrao']
+  visit ''
 end
 
 After do |scenario|
@@ -9,5 +11,27 @@ After do |scenario|
     screenshot = page.save_screenshot("log/#{nome_cenario}.png")
     shot = Base64.encode64(File.open(screenshot, "rb").read)
     embed(shot, "image/png", "Confira a evidência")
+    @LoginPage = LoginPage.new
+    @LoginPage.faz_logoff_sistemas
   end
+  @LoginPage.faz_logoff_pexnet
+end
+
+at_exit do
+
+  @infos = {
+      'Aplicação' => "Nome do Sistema",
+      'Ambiente' =>  "#{AMBIENTE}",
+      'Data e Hora' => DateTime.now
+  }
+
+  ReportBuilder.configure do |config|
+    config.input_path = "log/report.json"
+    config.report_path = "log/report"
+    config.report_types = [:html]
+    config.color = "indigo"
+    config.report_title = "Nome do Sistema"
+    config.additional_info = @infos
+  end
+  ReportBuilder.build_report
 end

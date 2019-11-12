@@ -1,8 +1,10 @@
-default: -p html -p bdd -p progress -p homologa -p headless -p cucumber
+default: -p json -p bdd -p progress -p prod -p headless -p cucumber
 
 html: -f html -o log/report.html
+json: -f json -o log/report.json
 bdd: -f pretty
 progress: --format progress
+prod: AMBIENTE=producao
 homologa: AMBIENTE=homologacao
 devel: AMBIENTE=desenvolvimento
 teste: AMBIENTE=teste
@@ -11,8 +13,7 @@ chrome: BROWSER=chrome
 headless: BROWSER=headless
 internet_explorer: BROWSER=internet_explorer
 firefox: BROWSER=firefox
-#cucumber: features/specs/fazer-login/fazer-login.feature
-# cucumber: features/specs/servicos/exemplo-servicos.feature
-cucumber: features/specs/servicos/exemplo-servicos.feature features/specs/fazer-login/fazer-login.feature
+cucumber: features/specs/fazer-login/fazer-login.feature
 
-# https://github.com/gkushang/cucumber-html-reporter
+#features/specs/fazer-login/fazer-login.feature
+#features/specs/servicos/exemplo-servicos.feature

@@ -1,5 +1,3 @@
-require 'oci8'
-
 class PortalPexNetPage < SitePrism::Page
   include Capybara::DSL
 
@@ -36,48 +34,40 @@ class PortalPexNetPage < SitePrism::Page
     menu_administracao.click
     wait_until_href_agpag_visible
     href_agpag.click
-    valida_usuario_logado
-    @LoginPage.faz_logoff_sistemas
   end
 
   def acessa_fam_familia
     menu_produtos.click
     wait_until_href_fam_familia_visible
     href_fam_familia.click
-    valida_usuario_logado
-    @LoginPage.faz_logoff_sistemas
   end
 
   def acessa_odonto
+    menu_produtos.click
     wait_until_href_odonto_visible
     href_odonto.click
-    valida_usuario_logado
-    @LoginPage.faz_logoff_sistemas
   end
 
   def acessa_decessos
+    menu_produtos.click
     wait_until_href_decessos_visible
     href_decessos.click
-    valida_usuario_logado
-    @LoginPage.faz_logoff_sistemas
   end
 
   def acessa_sinistro
+    menu_produtos.click
     wait_until_href_sinistro_visible
     href_sinistro.click
-    valida_usuario_logado_sinistro
-    @LoginPage.faz_logoff_sistemas
   end
 
   def acessa_central_de_pagamentos
     menu_produtos.click
     wait_until_href_central_de_pagamentos_visible
     href_central_de_pagamentos.click
-    valida_login_central_pagamento
-    @LoginPage.faz_logoff_sistemas
   end
 
   def acessa_scb
+    menu_produtos.click
     wait_until_href_scb_visible
     href_scb.click
   end

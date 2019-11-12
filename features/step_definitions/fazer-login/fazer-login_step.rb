@@ -8,6 +8,9 @@ end
 
 Quando("acesso o AGPAG") do
 
+  @PortalPexNetPage = PortalPexNetPage.new
+  @PortalPexNetPage.acessa_agpag_novo
+
   # $$$$$$$$ Comandos do Postgres $$$$$$$$
   @database_postgres = DatabasePostgres.new
   @database_postgres.database_version
@@ -23,36 +26,70 @@ Quando("acesso o AGPAG") do
   @database_mysql.listar_databases
   @database_mysql.listar_registros
   @database_mysql.select
+end
 
+Então("o sistema deve exibir o nome do usuário logado no AGPAG") do
   @PortalPexNetPage = PortalPexNetPage.new
-  @PortalPexNetPage.acessa_agpag_novo
+  @PortalPexNetPage.valida_usuario_logado
 end
 
 Quando("acesso o FAM FAMILIA") do
+  @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.acessa_fam_familia
 end
 
+Então("o sistema deve exibir o nome do usuário logado no FAM FAMILIA") do
+  @PortalPexNetPage = PortalPexNetPage.new
+  @PortalPexNetPage.valida_usuario_logado
+end
+
 Quando("acesso o ODONTO") do
+  @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.acessa_odonto
 end
 
+Então("o sistema deve exibir o nome do usuário logado no ODONTO") do
+  @PortalPexNetPage = PortalPexNetPage.new
+  @PortalPexNetPage.valida_usuario_logado
+end
+
 Quando("acesso o DECESSOS") do
+  @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.acessa_decessos
 end
 
+Então("o sistema deve exibir o nome do usuário logado no DECESSOS") do
+  @PortalPexNetPage = PortalPexNetPage.new
+  @PortalPexNetPage.valida_usuario_logado
+end
+
 Quando("acesso o SINISTRO") do
+  @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.acessa_sinistro
 end
 
-Quando("acesso o SCB") do
-  @PortalPexNetPage.acessa_scb
+Então("o sistema deve exibir o nome do usuário logado no SINISTRO") do
+  @PortalPexNetPage = PortalPexNetPage.new
+  @PortalPexNetPage.valida_usuario_logado_sinistro
 end
+
 
 Quando("acesso o CENTRAL DE PAGAMENTOS") do
   @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.acessa_central_de_pagamentos
 end
 
-Então("o sistema deve exibir o nome do usuário logado") do
+Então("o sistema deve exibir o nome do usuário logado no CENTRAL DE PAGAMENTOS") do
+  @PortalPexNetPage = PortalPexNetPage.new
+  @PortalPexNetPage.valida_login_central_pagamento
+end
+
+Quando("acesso o SCB") do
+  @PortalPexNetPage = PortalPexNetPage.new
+  @PortalPexNetPage.acessa_scb
+end
+
+Então("o sistema deve exibir o nome do usuário logado no SCB") do
+  @PortalPexNetPage = PortalPexNetPage.new
   @PortalPexNetPage.valida_login_scb
 end
