@@ -22,7 +22,7 @@ at_exit do
   @infos = {
       'Aplicação' => "Nome do Sistema",
       'Ambiente' =>  "#{AMBIENTE}",
-      'Data e Hora' => DateTime.now
+      'Data e Hora' => DateTime.now.strftime("%d/%m/%Y %H:%M")      
   }
 
   ReportBuilder.configure do |config|
