@@ -2,3 +2,6 @@ Gemfile.lock
 log/*.html
 log/*.png
 .idea/*
+res
+res/*
+res/values/*

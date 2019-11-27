@@ -1,18 +1,32 @@
+# Default da execução ao rodar o comando cucumber, inserindo todos os parametros informados abaixo.
+# Para editar qualquer parametro do "default", basta alterar a variavel na frente do comando "-p",
+# de acordo com a sua necessidade
 default: -p json -p bdd -p progress -p prod -p headless -p cucumber
 
+## Parametros para execução do teste
+
+# Formato do report. Ex: .html ou .json
 html: -f html -o log/report.html
 json: -f json -o log/report.json
+
+# Formato da apresentação do teste no terminal
 bdd: -f pretty
 progress: --format progress
+
+# Ambiente em que o teste vai ser executado.
 prod: AMBIENTE=producao
 homologa: AMBIENTE=homologacao
 devel: AMBIENTE=desenvolvimento
 teste: AMBIENTE=teste
 docker: AMBIENTE=docker
+
+# Opções de Browser para executar o teste
 chrome: BROWSER=chrome
 headless: BROWSER=headless
 internet_explorer: BROWSER=internet_explorer
 firefox: BROWSER=firefox
+
+# Features e casos de teste que vão ser executados
 cucumber: features/specs/fazer-login/fazer-login.feature
 
 #features/specs/fazer-login/fazer-login.feature
