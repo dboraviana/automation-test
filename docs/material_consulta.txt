@@ -117,6 +117,7 @@ Ex: within '#cidades' do
 `attach_file('name_component', 'path_to_image')` ou `find('form input[type="file"]').set('path/to/file')`
 ```
 Ex: attach_file('imagem', 'c:/imagens/minha_casa.png')
+Ex: attach_file('name_component', 'path_to_image', make_visible: true)
 Ex: attach_file('data-file', 'c:/imagens/lista_cidades.csv')
 Ex: find('form input[type="file"]').set('c:/imagens/lista_cidades.csv')
 ```

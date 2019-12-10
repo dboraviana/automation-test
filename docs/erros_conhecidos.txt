@@ -13,3 +13,15 @@ A solução encontrada foi buscar o elemento que estava no nível superior ao el
 
 Ex: find("span[class='x-btn-button']", :text => 'Login').click
 ```
+
+#### Erro ao anexar um arquivo em elemento não visivel
+##### Problema
+Ao enviar um arquivo para o campo input do tipo file, o elemento não é visivel, além disso o elemento não possuia 
+"id" ou "name.
+##### Solução Encontrada
+
+1 - Adicionar os atributos id e name ao campo;
+2 - Utilizar o metodo: attach_file('name_component', 'path_to_image'; Esse metódo utiliza o atributo name para encontrar o campo
+3 - Além de adicionar a opção: 'make_visible: true'; attach_file('name_component', 'path_to_image', make_visible: true)
+4 - Caso o make_visible não funcione também existe a alternativa de utilizar o:
+    find('form input[type="file"]', visible:false).set('c:/imagens/lista_cidades.csv')
