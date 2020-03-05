@@ -14,6 +14,20 @@ CUSTOM = YAML.load_file(File.dirname(__FILE__) + "/config.yml")
 case ENV["BROWSER"]
 when "firefox"
   @driver = :selenium
+when "firefox_headless"
+  Capybara.register_driver :firefox_headless do |app|
+    Capybara::Selenium::Driver.load_selenium
+    browser_options = ::Selenium::WebDriver::Firefox::Options.new.tap do |opts|
+      opts.args << "--headless"
+      opts.args << "--disable-gpu" if Gem.win_platform?
+      opts.args << "--no-sandbox"
+      opts.args << "--disable-site-isolation-trials"
+      opts.args << "--log-level=3"
+      opts.args << "--window-size=1920x1080"
+    end
+    Capybara::Selenium::Driver.new(app, browser: :firefox, options: browser_options)
+  end
+  @driver = :firefox_headless
 when "chrome"
   @driver = :selenium_chrome
 when "headless"
@@ -47,5 +61,5 @@ Capybara.configure do |config|
   config.default_driver = @driver
   config.app_host = CONFIG['url_padrao']
   config.default_max_wait_time = 60
-  Capybara.page.driver.browser.manage.window.resize_to(1280, 1204)
+  Capybara.page.driver.browser.manage.window.maximize
 end
