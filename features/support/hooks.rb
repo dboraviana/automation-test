@@ -11,18 +11,18 @@ After do |scenario|
     screenshot = page.save_screenshot("log/#{nome_cenario}.png")
     shot = Base64.encode64(File.open(screenshot, "rb").read)
     embed(shot, "image/png")
-    @LoginPage = LoginPage.new
-    @LoginPage.faz_logoff_sistemas
+      #@LoginPage = LoginPage.new
+      #@LoginPage.faz_logoff_sistema
   end
-  @LoginPage.faz_logoff_pexnet
+    #@LoginPage.faz_logoff_pexnet
 end
 
 at_exit do
 
   @infos = {
-      'Aplicação' => "Nome do Sistema",
-      'Ambiente' =>  "#{AMBIENTE}",
-      'Data e Hora' => DateTime.now.strftime("%d/%m/%Y %H:%M")      
+      'Aplicação' => "Nome da Aplicação",
+      'Ambiente' => "#{AMBIENTE}",
+      'Data e Hora' => DateTime.now.strftime("%d/%m/%Y %H:%M")
   }
 
   ReportBuilder.configure do |config|

@@ -1,7 +1,7 @@
 # Default da execução ao rodar o comando cucumber, inserindo todos os parametros informados abaixo.
 # Para editar qualquer parametro do "default", basta alterar a variavel na frente do comando "-p",
 # de acordo com a sua necessidade
-default: -p json -p bdd -p progress -p prod -p firefox_headless -p cucumber
+default: -p json -p bdd -p progress -p homologa -p chrome -p cucumber
 
 ## Parametros para execução do teste
 
@@ -28,7 +28,7 @@ firefox: BROWSER=firefox
 firefox_headless: BROWSER=firefox_headless
 
 # Features e casos de teste que vão ser executados
-cucumber: features/specs/fazer-login/fazer-login.feature
+cucumber: features/specs/
 
 #features/specs/fazer-login/fazer-login.feature
 #features/specs/servicos/exemplo-servicos.feature
