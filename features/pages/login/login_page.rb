@@ -4,8 +4,6 @@ class LoginPage < SitePrism::Page
   element :input_usuario, "#username"
   element :input_senha, "#password"
   element :div_titulo_pagina, "#pagina"
-  element :botao_sair_pexNet, ".linkSair"
-  element :botao_sair_sistema, ".topo-controles a", :text => "Sair"
   element :div_confirma_usuario, "div[id='topo'] div.topo-info-usuario label.resposta"
 
 
@@ -51,15 +49,8 @@ class LoginPage < SitePrism::Page
     else
       "Error: não foi possível localizar o ambiente de valor: (#{AMBIENTE})"
     end
+    sleep 2
   end
 
-  def faz_logoff_pexnet
-    @PO.clicar(botao_sair_pexNet)
-  end
 
-  def faz_logoff_sistema
-    within_window(windows.last) do
-      @PO.clicar(botao_sair_sistema)
-    end
-  end
 end

@@ -1,3 +1,5 @@
+# Classe disponibilizada para implementação de metodos genericos para tentar diminuir a repetição de metodos com as mesmas responsabilidades.
+
 class PageObject < SitePrism::Page
   include Capybara::DSL
   include RSpec::Matchers
