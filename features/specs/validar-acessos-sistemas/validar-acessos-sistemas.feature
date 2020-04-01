@@ -17,9 +17,11 @@ Funcionalidade: Validar acessos aos sistemas
     Então o sistema deve apresentar o sistema
     Exemplos:
       | menu          | sub_menu                                  |
-      | Administração | AGPAG(NOVO)                               |
       | Produtos      | Sistema de Gestão de Seguros FAM          |
       | Produtos      | Sistema de Gestão do Seguro Decessos      |
       | Produtos      | Sinistro                                  |
+      | Administração | AGPAG(NOVO)                               |
       | Produtos      | Central de Pagamentos                     |
       | Produtos      | Sistema de Gestão de Cobrança - SCB       |
+
+

@@ -16,6 +16,7 @@ class LoginPage < SitePrism::Page
     when 'homologacao'
       @PO.texto_eperado(div_titulo_pagina, "Sistema de Controle de Acesso")
       @PO.digita(input_usuario, (CUSTOM['user_name_homolog']))
+      sleep 2
       @PO.botao_com_value('Acessar')
       valida_login_pexnet
     when 'producao'

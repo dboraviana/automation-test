@@ -1,7 +1,7 @@
 # Default da execução ao rodar o comando cucumber, inserindo todos os parametros informados abaixo.
 # Para editar qualquer parametro do "default", basta alterar a variavel na frente do comando "-p",
 # de acordo com a sua necessidade
-default: -p json -p bdd -p progress -p homologa -p headless -p cucumber
+default: -p json -p bdd -p progress -p homologa -p chrome -p cucumber
 
 ## Parametros para execução do teste
 
