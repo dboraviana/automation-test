@@ -1,3 +1,12 @@
+## Dependencia de intalação 
+
+Deve ser executado o comando abaixo para a correta instalação da dependência "tiny_tds" dependencia de conexão para o banco de dados SQL Server.
+```
+$ gem install --platform ruby tiny_tds
+```
+
+
+
 ## Comando úteis para as implementações
 
 ### Para instalar uma nova GEM

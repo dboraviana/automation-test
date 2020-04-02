@@ -2,6 +2,7 @@ before_script:
   - chmod +x alpine.sh
   - ./alpine.sh
   - gem install bundler --no-document
+  - gem install --platform ruby tiny_tds
 
 image: ruby:alpine
 
