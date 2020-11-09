@@ -1,4 +1,4 @@
-default: -p json -p bdd -p progress -p homologa -p chrome -p cucumber --publish
+default: -p json -p bdd -p progress -p teste -p chrome -p cucumber --publish
 
 html: -f html -o log/report.html
 json: -f json -o log/report.json
