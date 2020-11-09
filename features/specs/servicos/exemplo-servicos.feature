@@ -33,7 +33,7 @@ Funcionalidade: Validar todos os Serviços do Módulo de Reserva, Item Locavel, 
     Então o serviço deverá apresentar a resposta de sucesso na comunicação
     Exemplos:
       | url_servico                                                                          |
-      | "https://homologaintranet.assejus.org.br/api/v1/tipo-item/montar-menu-lateral-app"   |xx
+      | "https://homologaintranet.assejus.org.br/api/v1/tipo-item/montar-menu-lateral-app"   |
 
   @servico
   Esquema do Cenário: Validar todos os serviços de USUARIO presentes no Sistema

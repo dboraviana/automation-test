@@ -1,6 +1,7 @@
 require "report_builder"
 
-Before() do
+
+Before("@ui") do
   visit ''
 end
 
