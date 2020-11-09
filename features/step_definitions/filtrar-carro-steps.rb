@@ -1,6 +1,7 @@
 Dado('que queira consultar carros') do
   @PO = PageObject.new
   @LC = ListaCarros.new
+  sleep(10)
   @PO.clicar(@LC.button_ver_ofertas)
   @LC.aguardar_lista_carros
 end
